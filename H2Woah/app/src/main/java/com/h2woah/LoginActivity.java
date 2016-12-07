@@ -50,6 +50,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity  {
+    public final static String INTENT = "com.h2woah.LoginAcitvity";
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -86,22 +87,16 @@ public class LoginActivity extends AppCompatActivity  {
                 attemptLogin();
             }
         });
-        Button registerButton = (Button) findViewById(R.id.register_button);
-        registerButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                register();
-            }
-        });
-
-
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 
 
-
+    public void register(View view) {
+        Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+        startActivity(intent);
+    }
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
@@ -174,24 +169,7 @@ public class LoginActivity extends AppCompatActivity  {
         }
         return false;
     }
-    private void register() {
-        // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
 
-        try {
-
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.openFileOutput("Users.txt", this.MODE_PRIVATE));
-            outputStreamWriter.write(email + ":" + password);
-            outputStreamWriter.close();
-
-            numUsers++;
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } catch (IOException ex) {
-
-        }
-    }
     private boolean isEmailValid(String email) {
         return email.contains("@");
     }
