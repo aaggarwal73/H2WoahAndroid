@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.openFileOutput("Users.txt", this.MODE_PRIVATE));
                 outputStreamWriter.write(uname + ":" + pass + ":" + location + ":" + userType);
                 outputStreamWriter.close();
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, MapsActivity.class);
                 startActivity(intent);
             } catch (IOException ex) {
 

@@ -143,7 +143,7 @@ public class LoginActivity extends AppCompatActivity  {
          //   mAuthTask = new UserLoginTask(email, password);
             //mAuthTask.execute((Void) null);
             if (verified) {
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, MapsActivity.class);
                 startActivity(intent);
             } else {
 
