@@ -100,40 +100,47 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng ATL = new LatLng(33.7756, -84.3963);
         //get source reports
        String[] sourceReports = new String[WaterSourceReport.num];
-       try {  InputStream inputStream = this.openFileInput("SourceReport.txt");
-            if ( inputStream != null ) {
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-                List<String> lines = new ArrayList<String>();
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    lines.add(line);
-                }
-
-                inputStream.close();
-                sourceReports = lines.toArray(new String[lines.size()]);
-            }
-       }
-        catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
-        } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
+        for(WaterSourceReport report: CreateSourceReport.sReports) {
+            LatLng loc = new LatLng(report.getLat(), report.getLon());
+            mMap.addMarker(new MarkerOptions()
+                    .position(loc)
+                    .title(report.getTypeOfReport())
+                    .snippet(report.toString()));
         }
-        for (String sReport: sourceReports) {
-            if (sReport != null) {
-                String[] pieces = sReport.split(",");
-                if (pieces.length == 7) {
-                    System.out.println(pieces[0] + pieces[1] + pieces[2] + pieces[3] + pieces[4] + pieces[5] + pieces[6]);
-                    WaterSourceReport report = new WaterSourceReport(Integer.parseInt(pieces[0]), pieces[1], pieces[2], pieces[3], Double.parseDouble(pieces[4]),
-                            Double.parseDouble(pieces[5]), WaterSourceReport.WaterType.stringToType(pieces[6]), WaterSourceReport.WaterCondition.stringToType(pieces[7]));
-                    LatLng loc = new LatLng(Double.parseDouble(pieces[4]), Double.parseDouble(pieces[5]));
-                    mMap.addMarker(new MarkerOptions().position(loc).title(report.toString()));
-                }
-
-            }
-
-        }
+//       try {  InputStream inputStream = this.openFileInput("SourceReport.txt");
+//            if ( inputStream != null ) {
+//                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+//                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+//
+//                List<String> lines = new ArrayList<String>();
+//                String line;
+//                while ((line = bufferedReader.readLine()) != null) {
+//                    lines.add(line);
+//                }
+//
+//                inputStream.close();
+//                sourceReports = lines.toArray(new String[lines.size()]);
+//            }
+//       }
+//        catch (FileNotFoundException e) {
+//            Log.e("login activity", "File not found: " + e.toString());
+//        } catch (IOException e) {
+//            Log.e("login activity", "Can not read file: " + e.toString());
+//        }
+//        for (String sReport: sourceReports) {
+//            if (sReport != null) {
+//                String[] pieces = sReport.split(",");
+//                if (pieces.length == 7) {
+//                    System.out.println(pieces[0] + pieces[1] + pieces[2] + pieces[3] + pieces[4] + pieces[5] + pieces[6]);
+//                    WaterSourceReport report = new WaterSourceReport(Integer.parseInt(pieces[0]), pieces[1], pieces[2], pieces[3], Double.parseDouble(pieces[4]),
+//                            Double.parseDouble(pieces[5]), WaterSourceReport.WaterType.stringToType(pieces[6]), WaterSourceReport.WaterCondition.stringToType(pieces[7]));
+//                    LatLng loc = new LatLng(Double.parseDouble(pieces[4]), Double.parseDouble(pieces[5]));
+//                    mMap.addMarker(new MarkerOptions().position(loc).title(report.toString()));
+//                }
+//
+//            }
+//
+//        }
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(ATL));
     }

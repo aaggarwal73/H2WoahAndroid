@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -32,6 +33,9 @@ public class CreateSourceReport extends AppCompatActivity {
     private EditText longitude;
     private Spinner condition;
     private Spinner source;
+    public static ArrayList<WaterSourceReport> sReports = new ArrayList<WaterSourceReport>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,17 +115,20 @@ public class CreateSourceReport extends AppCompatActivity {
         } else {
 
             WaterSourceReport report = new WaterSourceReport(date, time, name, latNum, lonNum, type, condit);
+            sReports.add(report);
+            Intent intent = new Intent(this, MapsActivity.class);
+            startActivity(intent);
             //write to file
-            try {
-                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-                        this.openFileOutput("SourceReport.txt", this.MODE_PRIVATE));
-                outputStreamWriter.write(report.toDatabase());
-                outputStreamWriter.close();
-                Intent intent = new Intent(this, MapsActivity.class);
-                startActivity(intent);
-            } catch (IOException e) {
-
-            }
+//            try {
+//                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
+//                        this.openFileOutput("SourceReport.txt", this.MODE_PRIVATE));
+//                outputStreamWriter.write(report.toDatabase());
+//                outputStreamWriter.close();
+//                Intent intent = new Intent(this, MapsActivity.class);
+//                startActivity(intent);
+//            } catch (IOException e) {
+//
+//            }
         }
     }
 

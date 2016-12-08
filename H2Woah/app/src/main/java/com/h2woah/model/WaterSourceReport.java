@@ -95,7 +95,6 @@ public class WaterSourceReport {
     }
 
     public static int num = 1;
-
     private int reportNum;
     public int getNum() { return reportNum; }
 
@@ -200,8 +199,9 @@ public class WaterSourceReport {
         return "Source Report";
     }
 
-    public String toDatabase() {
+    public String toDatabase(WaterSourceReport report) {
         return  reportNum + "," + date + "," + time + "," + name + "," + lat + "," + lon + "," + type + "," + condition +"\n";
+//        sReports.add(report);
     }
     @Override
     public String toString() {

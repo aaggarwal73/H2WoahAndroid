@@ -16,4 +16,96 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+    <ToggleButton
+        android:text="Use Current Location"
+        android:textOff="Not Using Location"
+        android:textOn="Using Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp"
+        android:id="@+id/toggleButton" />
+
+    <TextView
+        android:text="Or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toggleButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:id="@+id/or_label" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create"
+        android:layout_alignLeft="@+id/create"
+        android:layout_alignStart="@+id/create"
+        android:id="@+id/cancel"
+        android:onClick="cancel" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:hint="Enter source latitude"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/latitude"
+        android:layout_below="@+id/or_label"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create"
+        android:onClick="createReport"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/contaminant"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/condition"
+        android:layout_below="@+id/longitude"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:hint="Enter source longitude"
+        android:ems="10"
+        android:id="@+id/longitude"
+        android:layout_below="@+id/latitude"
+        android:layout_alignLeft="@+id/latitude"
+        android:layout_alignStart="@+id/latitude" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:hint="Enter Conaminant PPM"
+        android:ems="10"
+        android:id="@+id/contaminant"
+        android:layout_marginTop="92dp"
+        android:layout_below="@+id/condition"
+        android:layout_alignLeft="@+id/virusPPM"
+        android:layout_alignStart="@+id/virusPPM" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:hint="Enter Virus PPM"
+        android:ems="10"
+        android:id="@+id/virusPPM"
+        android:layout_below="@+id/condition"
+        android:layout_alignLeft="@+id/longitude"
+        android:layout_alignStart="@+id/longitude"
+        android:layout_marginTop="12dp" />
 </RelativeLayout>
