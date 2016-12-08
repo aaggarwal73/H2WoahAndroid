@@ -36,16 +36,6 @@
         android:layout_marginTop="17dp"
         android:id="@+id/or_label" />
 
-    <Button
-        android:text="Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/create"
-        android:layout_alignLeft="@+id/create"
-        android:layout_alignStart="@+id/create"
-        android:id="@+id/cancel"
-        android:onClick="cancel" />
-
     <EditText
         android:layout_width="wrap_content"
         android:hint="Enter source latitude"
@@ -56,20 +46,10 @@
         android:layout_below="@+id/or_label"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:text="Create"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/create"
-        android:onClick="createReport"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/contaminant"
-        android:layout_centerHorizontal="true" />
-
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/condition"
+        android:id="@+id/quality"
         android:layout_below="@+id/longitude"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -85,6 +65,27 @@
         android:layout_alignLeft="@+id/latitude"
         android:layout_alignStart="@+id/latitude" />
 
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancel"
+        android:onClick="cancel"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/create"
+        android:layout_alignStart="@+id/create"
+        android:layout_marginBottom="37dp" />
+
+    <Button
+        android:text="Create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create"
+        android:onClick="createReport"
+        android:layout_above="@+id/cancel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,10 +93,9 @@
         android:hint="Enter Conaminant PPM"
         android:ems="10"
         android:id="@+id/contaminant"
-        android:layout_marginTop="92dp"
-        android:layout_below="@+id/condition"
-        android:layout_alignLeft="@+id/virusPPM"
-        android:layout_alignStart="@+id/virusPPM" />
+        android:layout_above="@+id/create"
+        android:layout_alignLeft="@+id/longitude"
+        android:layout_alignStart="@+id/longitude" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -104,8 +104,7 @@
         android:hint="Enter Virus PPM"
         android:ems="10"
         android:id="@+id/virusPPM"
-        android:layout_below="@+id/condition"
-        android:layout_alignLeft="@+id/longitude"
-        android:layout_alignStart="@+id/longitude"
-        android:layout_marginTop="12dp" />
+        android:layout_above="@+id/contaminant"
+        android:layout_alignLeft="@+id/contaminant"
+        android:layout_alignStart="@+id/contaminant" />
 </RelativeLayout>
