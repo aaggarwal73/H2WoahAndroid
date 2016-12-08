@@ -1,9 +1,13 @@
 package com.h2woah;
 
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +27,8 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.actionbar);
+        setSupportActionBar(myToolbar);
         passwordField = (EditText) findViewById(R.id.passwordField);;
         emailField = (EditText) findViewById(R.id.emailField);
         address = (EditText) findViewById(R.id.address);
@@ -46,6 +52,33 @@ public class EditProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.logout_action:
+            {
+                LoginActivity.logout();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            case R.id.action_back:
+            {
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            }
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**

@@ -1,6 +1,11 @@
 package com.h2woah.model;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Represents level of power of user within the app
  * Created by Sahaj Bhatt on 9/17/16.
@@ -9,16 +14,16 @@ public enum UserLevel {
     NORMAL, WORKER, MANAGER, ADMIN;
 
 
-//    /**
-//     * Transforms the enum into a list
-//     * @return  the final list
-//     */
-//    public static Collection<UserLevel> toList() {
-//        ObservableList<UserLevel> list = Collection.observableArrayList();
-//
-//        Collections.addAll(list, values());
-//        return list;
-//    }
+    /**
+     * Transforms the enum into a list
+     * @return  the final list
+     */
+    public static Collection<UserLevel> toList() {
+        List<UserLevel> list = new ArrayList<UserLevel>();
+
+        Collections.addAll(list, values());
+        return list;
+    }
 
     /**
      * Changes inputted string to a userlevel enum

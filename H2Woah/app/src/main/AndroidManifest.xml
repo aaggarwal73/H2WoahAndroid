@@ -52,10 +52,19 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".CreateWaterReportActivity" />
-        <activity android:name=".EditProfileActivity" />
-        <activity android:name=".CreateSourceReport" />
-        <activity android:name=".CreateQualityReport"></activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:parentActivityName=".MapsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".CreateSourceReport"
+            android:parentActivityName=".MapsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".CreateQualityReport"
+            android:parentActivityName=".MapsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".BaseMenuActivity"></activity>
     </application>
 
 </manifest>
