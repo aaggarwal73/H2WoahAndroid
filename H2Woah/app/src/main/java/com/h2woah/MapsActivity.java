@@ -1,11 +1,9 @@
 package com.h2woah;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,19 +12,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.h2woah.model.User;
 import com.h2woah.model.UserLevel;
 import com.h2woah.model.WaterSourceReport;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -89,6 +77,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 return true;
             case R.id.view_source_report:
                 intent = new Intent(this, ViewReportsActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.view_graph:
+                intent = new Intent(this, ViewGraphActivity.class);
                 startActivity(intent);
                 return true;
             default:

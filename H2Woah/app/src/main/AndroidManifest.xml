@@ -64,8 +64,17 @@
             android:name=".CreateQualityReport"
             android:parentActivityName=".MapsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".BaseMenuActivity" />
-        <activity android:name=".ViewReportsActivity"></activity>
+        <activity
+            android:name=".ViewReportsActivity"
+            android:parentActivityName=".MapsActivity" />
+        <activity
+            android:name=".ViewQualityReportsActivity"
+            android:parentActivityName=".MapsActivity" />
+        <activity
+            android:name=".ViewGraphActivity"
+            android:parentActivityName=".MapsActivity" />
+        <activity android:name=".CreateGraph"
+            android:parentActivityName=".MapsActivity" />
     </application>
 
 </manifest>

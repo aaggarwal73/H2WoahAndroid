@@ -17,6 +17,39 @@ public class WaterQualityReport {
     private double virusPPM;
     private double contaminantPPM;
     private String date;
+
+    public static int getReportNum() {
+        return reportNum;
+    }
+
+    public double getVirusPPM() {
+        return virusPPM;
+    }
+
+    public double getContaminantPPM() {
+        return contaminantPPM;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getReporterName() {
+        return reporterName;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
     private String time;
     private String reporterName;
     private double lat;

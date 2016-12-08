@@ -49,5 +49,11 @@
         android:orderInCategory="5"
         app:showAsAction="never">
     </item>
+    <item
+        android:title="View Graph"
+        android:id="@+id/view_graph"
+        android:orderInCategory="6"
+        app:showAsAction="never">
+    </item>
 
 </menu>

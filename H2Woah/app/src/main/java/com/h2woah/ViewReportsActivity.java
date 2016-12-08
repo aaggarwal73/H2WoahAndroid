@@ -59,9 +59,9 @@ public class ViewReportsActivity extends AppCompatActivity {
                 return true;
             }
             case R.id.action_back: {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                startActivity(intent);
+                NavUtils.navigateUpFromSameTask(this);
                 return true;
+
             }
 
         }
