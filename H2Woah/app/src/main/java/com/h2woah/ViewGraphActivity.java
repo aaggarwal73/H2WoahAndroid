@@ -38,7 +38,7 @@ public class ViewGraphActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.actionbar);
         setSupportActionBar(myToolbar);
         reports = CreateQualityReport.qReports;
-        loadGraph("2016");
+        loadGraph(CreateGraphActivity.getYear());
 
 
     }
@@ -163,7 +163,7 @@ public class ViewGraphActivity extends AppCompatActivity {
                     series.add(new Entry(monthlyAverages[i], i));
                 }
             }
-            ScatterDataSet dataset = new ScatterDataSet(series, "contaminants");
+            ScatterDataSet dataset = new ScatterDataSet(series, "things");
             ScatterData data = new ScatterData(labels, dataset);
             chart.setData(data);
             chart.setDescription("Description");

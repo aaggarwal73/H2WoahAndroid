@@ -79,8 +79,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 intent = new Intent(this, ViewReportsActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.view_graph:
-                intent = new Intent(this, ViewGraphActivity.class);
+            case R.id.create_graph:
+                intent = new Intent(this, CreateGraphActivity.class);
                 startActivity(intent);
                 return true;
             default:

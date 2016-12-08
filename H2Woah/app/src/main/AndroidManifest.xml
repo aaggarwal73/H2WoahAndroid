@@ -73,7 +73,7 @@
         <activity
             android:name=".ViewGraphActivity"
             android:parentActivityName=".MapsActivity" />
-        <activity android:name=".CreateGraph"
+        <activity android:name=".CreateGraphActivity"
             android:parentActivityName=".MapsActivity" />
     </application>
 
