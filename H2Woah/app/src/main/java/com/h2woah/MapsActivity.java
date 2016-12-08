@@ -76,6 +76,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 intent = new Intent(this, CreateQualityReport.class);
                 startActivity(intent);
                 return true;
+            case R.id.view_quality_report:
+                intent = new Intent(this, ViewQualityReportsActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.view_source_report:
+                intent = new Intent(this, ViewReportsActivity.class);
+                startActivity(intent);
+                return true;
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

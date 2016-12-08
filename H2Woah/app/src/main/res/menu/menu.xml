@@ -37,5 +37,17 @@
         android:orderInCategory="4"
         app:showAsAction="never">
     </item>
+    <item
+        android:title="View Quality Report"
+        android:id="@+id/view_quality_report"
+        android:orderInCategory="6"
+        app:showAsAction="never">
+    </item>
+    <item
+        android:title="View Source Report"
+        android:id="@+id/view_source_report"
+        android:orderInCategory="5"
+        app:showAsAction="never">
+    </item>
 
 </menu>

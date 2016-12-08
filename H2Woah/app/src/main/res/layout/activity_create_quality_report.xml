@@ -92,7 +92,7 @@
         android:inputType="numberSigned"
         android:hint="Enter Conaminant PPM"
         android:ems="10"
-        android:id="@+id/contaminant"
+        android:id="@+id/contaminantPPM"
         android:layout_above="@+id/create"
         android:layout_alignLeft="@+id/longitude"
         android:layout_alignStart="@+id/longitude" />
