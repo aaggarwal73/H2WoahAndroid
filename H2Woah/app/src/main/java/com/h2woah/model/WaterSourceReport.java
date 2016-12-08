@@ -24,6 +24,43 @@ public class WaterSourceReport {
             Collections.addAll(list, values());
             return list;
         }
+        public static String toString(WaterType level) {
+            switch (level) {
+                case BOTTLED:
+                    return "BOTTLED";
+                case WELL:
+                    return "WELL";
+                case STREAM:
+                    return "STREAM";
+                case LAKE:
+                    return "LAKE";
+                case SPRING:
+                    return "SPRING";
+                case OTHER:
+                    return "OTHER";
+            }
+
+            return null;
+        }
+        public static WaterType stringToType(String level) {
+            if ((level instanceof String)) {
+                switch (level) {
+                    case "BOTTLED":
+                        return BOTTLED;
+                    case "WELL":
+                        return WELL;
+                    case "STREAM":
+                        return STREAM;
+                    case "LAKE":
+                        return LAKE;
+                    case "SPRING":
+                        return SPRING;
+                    case "OTHER":
+                        return OTHER;
+                }
+            }
+            return null;
+        }
     }
 
     public enum WaterCondition {
@@ -39,9 +76,25 @@ public class WaterSourceReport {
             Collections.addAll(list, values());
             return list;
         }
+        public static WaterCondition stringToType(String level) {
+            if ((level instanceof String)) {
+                switch (level) {
+                    case "WASTE":
+                        return WASTE;
+                    case "TREATABLECLEAR":
+                        return TREATABLECLEAR;
+                    case "TREATABLEMUDDY":
+                        return TREATABLEMUDDY;
+                    case "POTABLE":
+                        return POTABLE;
+
+                }
+            }
+            return null;
+        }
     }
 
-    private static int num = 1;
+    public static int num = 1;
 
     private int reportNum;
     public int getNum() { return reportNum; }
@@ -107,7 +160,7 @@ public class WaterSourceReport {
         this.type = type;
         this.condition = condition;
         this.reportNum = num;
-        WaterSourceReport.num++;
+       // WaterSourceReport.num++;
     }
 
     public static WaterCondition stringToCondition(String s) {
@@ -148,14 +201,11 @@ public class WaterSourceReport {
     }
 
     public String toDatabase() {
-        return  num + ":" + date + ":"
-                + time + ":" + name
-                + ":" + lat + ":" + lon
-                + ":" + type + ":" + condition;
+        return  reportNum + "," + date + "," + time + "," + name + "," + lat + "," + lon + "," + type + "," + condition +"\n";
     }
     @Override
     public String toString() {
-        return "Num: " + num + "\n" + "Date: " + date + "\n"
+        return "Num: " + reportNum + "\n" + "Date: " + date + "\n"
                 + "Time: " + time + "\n" + "Name: " + name
                 + "\n" + "Lat: " + lat + "\n" + "Long: " + lon
                 + "\n" + "Type: " + type + "\n" + "Condition: " + condition;

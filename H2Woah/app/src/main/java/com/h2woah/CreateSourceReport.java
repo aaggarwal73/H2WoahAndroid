@@ -114,7 +114,7 @@ public class CreateSourceReport extends AppCompatActivity {
             //write to file
             try {
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-                        this.openFileOutput("SourceReports.txt", this.MODE_PRIVATE));
+                        this.openFileOutput("SourceReport.txt", this.MODE_PRIVATE));
                 outputStreamWriter.write(report.toDatabase());
                 outputStreamWriter.close();
                 Intent intent = new Intent(this, MapsActivity.class);

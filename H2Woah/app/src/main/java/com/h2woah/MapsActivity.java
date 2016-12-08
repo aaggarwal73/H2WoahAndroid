@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -13,8 +14,18 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.h2woah.model.User;
+import com.h2woah.model.WaterSourceReport;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -87,7 +98,43 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         LatLng ATL = new LatLng(33.7756, -84.3963);
-        mMap.addMarker(new MarkerOptions().position(ATL).title("Marker in Atlanta"));
+        //get source reports
+       String[] sourceReports = new String[WaterSourceReport.num];
+       try {  InputStream inputStream = this.openFileInput("SourceReport.txt");
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                List<String> lines = new ArrayList<String>();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    lines.add(line);
+                }
+
+                inputStream.close();
+                sourceReports = lines.toArray(new String[lines.size()]);
+            }
+       }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+        for (String sReport: sourceReports) {
+            if (sReport != null) {
+                String[] pieces = sReport.split(",");
+                if (pieces.length == 7) {
+                    System.out.println(pieces[0] + pieces[1] + pieces[2] + pieces[3] + pieces[4] + pieces[5] + pieces[6]);
+                    WaterSourceReport report = new WaterSourceReport(Integer.parseInt(pieces[0]), pieces[1], pieces[2], pieces[3], Double.parseDouble(pieces[4]),
+                            Double.parseDouble(pieces[5]), WaterSourceReport.WaterType.stringToType(pieces[6]), WaterSourceReport.WaterCondition.stringToType(pieces[7]));
+                    LatLng loc = new LatLng(Double.parseDouble(pieces[4]), Double.parseDouble(pieces[5]));
+                    mMap.addMarker(new MarkerOptions().position(loc).title(report.toString()));
+                }
+
+            }
+
+        }
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(ATL));
     }
 }
