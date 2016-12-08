@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.h2woah.model.User;
+import com.h2woah.model.UserLevel;
 import com.h2woah.model.WaterSourceReport;
 
 import java.io.BufferedReader;
@@ -45,7 +46,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        if (LoginActivity.currentUser.getUserLevel().equals(UserLevel.NORMAL)) {
+            getMenuInflater().inflate(R.menu.usermenu, menu);
+
+        } else {
+            getMenuInflater().inflate(R.menu.menu, menu);
+
+        }
         return true;
     }
     @Override
@@ -53,9 +60,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Intent intent;
         switch (item.getItemId()) {
             case R.id.action_back:
-                LoginActivity.logout();
-                intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+//                LoginActivity.logout();
+//                intent = new Intent(this, LoginActivity.class);
+//                startActivity(intent);
                 // User chose the "back" item, show the app settings UI...
                 return true;
             case R.id.logout_action:

@@ -70,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.openFileOutput("Users.txt", this.MODE_PRIVATE));
                 outputStreamWriter.write(person.toString());
                 outputStreamWriter.close();
+                LoginActivity.currentUser = person;
                 Intent intent = new Intent(this, MapsActivity.class);
                 startActivity(intent);
             } catch (IOException ex) {
