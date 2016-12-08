@@ -147,6 +147,12 @@ public class WaterSourceReport {
         return "Source Report";
     }
 
+    public String toDatabase() {
+        return  num + ":" + date + ":"
+                + time + ":" + name
+                + ":" + lat + ":" + lon
+                + ":" + type + ":" + condition;
+    }
     @Override
     public String toString() {
         return "Num: " + num + "\n" + "Date: " + date + "\n"

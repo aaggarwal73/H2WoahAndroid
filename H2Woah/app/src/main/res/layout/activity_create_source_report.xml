@@ -17,7 +17,9 @@
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
     <ToggleButton
-        android:text="ToggleButton"
+        android:text="Use Current Location"
+        android:textOff="Not Using Location"
+        android:textOn="Using Location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -26,69 +28,73 @@
         android:id="@+id/toggleButton" />
 
     <TextView
-        android:text="TextView"
+        android:text="Or"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toggleButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
-        android:id="@+id/textView" />
+        android:id="@+id/or_label" />
 
     <EditText
         android:layout_width="wrap_content"
+        android:hint="Enter source latitude"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:ems="10"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/or_label"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
-        android:id="@+id/editText" />
+        android:id="@+id/latitude" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
+        android:hint="Enter source longitude"
         android:ems="10"
-        android:layout_below="@+id/editText"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
+        android:layout_below="@+id/latitude"
+        android:layout_alignRight="@+id/latitude"
+        android:layout_alignEnd="@+id/latitude"
         android:layout_marginTop="16dp"
-        android:id="@+id/editText2" />
+        android:id="@+id/longitude" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:id="@+id/spinner"
-        android:layout_below="@+id/editText2"
+        android:id="@+id/condition"
+        android:layout_below="@+id/longitude"
         android:layout_centerHorizontal="true" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner"
+        android:layout_below="@+id/condition"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="12dp"
-        android:id="@+id/spinner2" />
+        android:id="@+id/source" />
 
     <Button
-        android:text="Button"
+        android:text="Create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner2"
+        android:layout_below="@+id/source"
         android:layout_alignRight="@+id/toggleButton"
         android:layout_alignEnd="@+id/toggleButton"
         android:layout_marginTop="39dp"
-        android:id="@+id/button2" />
+        android:id="@+id/create"
+        android:onClick="createReport" />
 
     <Button
-        android:text="Button"
+        android:text="Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:id="@+id/button4" />
+        android:layout_below="@+id/create"
+        android:layout_alignLeft="@+id/create"
+        android:layout_alignStart="@+id/create"
+        android:id="@+id/cancel"
+        android:onClick="cancel" />
 
 </RelativeLayout>
