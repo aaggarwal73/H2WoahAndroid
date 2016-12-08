@@ -1,9 +1,12 @@
 package com.h2woah;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -11,6 +14,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.h2woah.model.User;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -27,7 +31,43 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_back:
+                LoginActivity.logout();
+                intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                // User chose the "back" item, show the app settings UI...
+                return true;
+            case R.id.logout_action:
+                LoginActivity.logout();
+                intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                // User chose the "back" item, show the app settings UI...
+                return true;
+            case R.id.edit_profile:
+                intent = new Intent(this, EditProfileActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.new_water_report:
+                intent = new Intent(this, CreateSourceReport.class);
+                startActivity(intent);
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
 
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -42,9 +82,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng ATL = new LatLng(33.7756, -84.3963);
+        mMap.addMarker(new MarkerOptions().position(ATL).title("Marker in Atlanta"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ATL));
     }
 }

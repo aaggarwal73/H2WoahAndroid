@@ -31,6 +31,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.h2woah.model.User;
+import com.h2woah.model.UserLevel;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -55,7 +58,7 @@ public class LoginActivity extends AppCompatActivity  {
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-
+    public static User currentUser;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
@@ -163,13 +166,33 @@ public class LoginActivity extends AppCompatActivity  {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(email)) {
                     // Account exists, return true if the password matches.
-                    return pieces[1].equals(password);
+                    boolean valid =  pieces[1].equals(password);
+                    if (valid) {
+                        if (login(new User (pieces[0], pieces[1], UserLevel.stringToUserLevel(pieces[2]), pieces[3]))) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
                 }
             }
         }
         return false;
     }
+    public static boolean login(User user) {
+        if (currentUser == null) {
+            currentUser = user;
+            return true;
+        } else {
+            return false;
+        }
 
+    }
+    public static void logout() {
+        currentUser = null;
+    }
     private boolean isEmailValid(String email) {
         return email.contains("@");
     }
@@ -232,7 +255,6 @@ public class LoginActivity extends AppCompatActivity  {
                 }
 
                 inputStream.close();
-                //ßret = stringBuilder.toString();
                 return lines.toArray(new String[lines.size()]);
             }
         }

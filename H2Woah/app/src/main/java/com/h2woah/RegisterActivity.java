@@ -5,12 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Scroller;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.h2woah.model.User;
+import com.h2woah.model.UserLevel;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -51,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         String pass2 = confirmPassword.getText().toString();
         String location = address.getText().toString();
         UserLevel level = (UserLevel) userLevel.getSelectedItem();
-        String userType = UserLevel.toString(level);
+        //String userType = UserLevel.toString(level);
         if (uname.isEmpty() || pass.isEmpty() || location.isEmpty()) {
             Toast toast = Toast.makeText(this, "Fill in all fields", Toast.LENGTH_SHORT);
             toast.show();
@@ -63,8 +64,9 @@ public class RegisterActivity extends AppCompatActivity {
             toast.show();
         } else {
             try {
+                User person = new User(uname, pass, level, location);
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.openFileOutput("Users.txt", this.MODE_PRIVATE));
-                outputStreamWriter.write(uname + ":" + pass + ":" + location + ":" + userType);
+                outputStreamWriter.write(person.toString());
                 outputStreamWriter.close();
                 Intent intent = new Intent(this, MapsActivity.class);
                 startActivity(intent);

@@ -1,8 +1,5 @@
-package com.h2woah;
+package com.h2woah.model;
 
-
-import java.util.Collection;
-import java.util.Collections;
 
 /**
  * Represents level of power of user within the app

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="back_button"
+        android:id="@+id/action_back"
+        android:icon="@drawable/ic_action_back"
+        android:orderInCategory="1"
+        app:showAsAction="always">
+
+    </item>
+
+    <item
+        android:title="Logout"
+        android:id="@+id/logout_action"
+        android:orderInCategory="100"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:title="Edit Profile"
+        android:id="@+id/edit_profile"
+        android:icon="@drawable/ic_action_person"
+        android:orderInCategory="2"
+        app:showAsAction="always">
+    </item>
+    <item
+        android:title="Submit Water Report"
+        android:id="@+id/new_water_report"
+        android:orderInCategory="3"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:title="Submit Quality Report"
+        android:id="@+id/new_quality_report"
+        android:orderInCategory="4"
+        app:showAsAction="never">
+    </item>
+
+</menu>
